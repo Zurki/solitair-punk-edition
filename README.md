@@ -37,9 +37,9 @@ docker-compose up -d   # deploy the rebellion
 
 # Or build it yourself
 docker build -t punk-solitair .   # package the anarchy
-docker run -p 3000:3000 punk-solitair   # unleash chaos
+docker run -p 4269:4269 punk-solitair   # unleash chaos
 ```
-Access your containerized REBELLION at `http://localhost:3000`!
+Access your containerized REBELLION at `http://localhost:4269`!
 
 Read the even more ass deployment documentation here [DEPLOYMENT.md](DEPLOYMENT.md) or don't WE DON'T CARE!
 
