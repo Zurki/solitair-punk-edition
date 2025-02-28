@@ -43,7 +43,7 @@ If `punk-solitair` is running, CONGRATULATIONS ON DOING THE BARE MINIMUM! Access
 
 So you're using COOLIFY? FINE, WE'LL HOLD YOUR HAND:
 
-1. WE'VE ALREADY CHANGED THE PORT TO `4269:3000` BECAUSE YOUR SERVER IS TOO WEAK TO HANDLE OUR DEFAULT PORTS
+1. WE'VE CONFIGURED THE APP TO RUN ON PORT 4269 BOTH INTERNALLY AND EXTERNALLY BECAUSE WE'RE CONSISTENT ANARCHISTS
 
 2. CLONE THIS REPO INTO YOUR COOLIFY INSTANCE:
 ```bash
@@ -62,6 +62,43 @@ git clone https://github.com/Zurki/punk-solitair.git  # STEAL OUR CODE
 5. ACCESS YOUR PATHETIC REBELLION AT WHATEVER URL COOLIFY ASSIGNS YOU
 
 6. IF IT DOESN'T WORK, BLAME COOLIFY NOT US
+
+### 🖕 WHEN YOUR COOLIFY DOMAIN IS BROKEN BUT IP:PORT WORKS 🖕
+
+SO YOUR IP:PORT WORKS BUT THE FANCY DOMAIN DOESN'T? CLASSIC COOLIFY BETRAYAL! HERE'S WHY:
+
+1. COOLIFY'S PROXY IS CONFUSED AS HELL - It's trying to route traffic to the wrong port internally.
+
+2. FIX THIS CORPORATE NIGHTMARE:
+   - GO TO YOUR SERVICE IN COOLIFY'S DASHBOARD
+   - FIND "CUSTOM DOMAIN" SETTINGS
+   - MAKE SURE "EXPOSE PORT" IS SET TO 4269
+   - CLICK "SAVE" OR WHATEVER CORPORATE BUTTON THEY GIVE YOU
+   - REDEPLOY THE DAMN THING
+
+3. STILL NOT WORKING? COOLIFY'S PROXY NEEDS A LOBOTOMY:
+   - SSH INTO YOUR COOLIFY SERVER
+   ```bash
+   ssh your-coolify-server
+   ```
+   - FIND THE TRAEFIK CONFIG:
+   ```bash
+   docker exec -it coolify-proxy-traefik cat /etc/traefik/dynamic/conf.yml | grep punk-solitair -A 10
+   ```
+   - IF IT SHOWS ANY PORT OTHER THAN 4269, COOLIFY IS LYING TO YOU
+   - RESTART THE PROXY:
+   ```bash
+   docker restart coolify-proxy-traefik
+   ```
+   - REDEPLOY YOUR SERVICE AGAIN
+
+4. LAST RESORT - MANUAL OVERRIDE:
+   - EDIT YOUR SERVICE IN COOLIFY
+   - ADD THIS ENVIRONMENT VARIABLE:
+   ```
+   COOLIFY_PROXY_PORT=4269
+   ```
+   - REDEPLOY AND PRAY TO THE PUNK GODS
 
 ## 🔄 WHEN YOU NEED FRESH CHAOS
 
@@ -115,7 +152,7 @@ server {
     server_name your-domain.com;  # YOUR CORPORATE IDENTITY
 
     location / {
-        proxy_pass http://punk-solitair:3000;  # REDIRECT THE SHEEP
+        proxy_pass http://punk-solitair:4269;  # REDIRECT THE SHEEP TO PORT 4269
         proxy_set_header Host $host;  # IDENTITY THEFT
         proxy_set_header X-Real-IP $remote_addr;  # STALKING
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # MORE STALKING
