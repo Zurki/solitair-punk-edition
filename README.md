@@ -1,4 +1,4 @@
-# �� PUNK-SOLITAIR 🔥
+# 🤘 PUNK-SOLITAIR 🔥
 
 **WARNING:** This repository was created to try out the new Claude 3.7 Sonnet Thinking model
 
@@ -16,6 +16,8 @@ Punk-Solitair ain't your grandma's card game! It's a rad, in-your-face twist on 
 
 ## 🔌 INSTALLATION 🔌
 
+### THE CONFORMIST WAY (Local Development)
+
 Hack this system by pasting these commands:
 
 ```bash
@@ -24,6 +26,22 @@ npm run dev   # stick it to the man
 ```
 
 Then point your capitalist browser to `http://localhost:5173` and DESTROY THE ESTABLISHMENT!
+
+### THE ANARCHIST WAY (Docker)
+
+Got Docker? SMASH THE SYSTEM with these commands:
+
+```bash
+# Build and run with Docker Compose
+docker-compose up -d   # deploy the rebellion
+
+# Or build it yourself
+docker build -t punk-solitair .   # package the anarchy
+docker run -p 3000:3000 punk-solitair   # unleash chaos
+```
+Access your containerized REBELLION at `http://localhost:3000`!
+
+Read the even more ass deployment documentation here [DEPLOYMENT.md](DEPLOYMENT.md) or don't WE DON'T CARE!
 
 ## 🔥 HOW TO PLAY 🔥
 
@@ -40,6 +58,19 @@ npm run build   # package the rebellion
 ```
 
 Deploy it to whatever corporate server farm you want. WE DON'T CARE! It's YOUR revolution!
+
+### SERVER DEPLOYMENT
+
+For EXTREME DEPLOYMENTS, we've included Docker and Docker Compose configs:
+
+```bash
+# On your server
+git clone https://github.com/your-username/punk-solitair.git
+cd punk-solitair
+docker-compose up -d
+```
+
+Check out [DEPLOYMENT.md](DEPLOYMENT.md) for more HARDCORE deployment options!
 
 ## 🚫 RULES ARE FOR SUCKERS 🚫
 
