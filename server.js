@@ -1,5 +1,6 @@
 // PUNK SERVER CONFIGURATION - BECAUSE DEFAULT SERVERS ARE FOR CONFORMISTS
-import { createServer } from '@react-router/node';
+import pkg from '@react-router/node';
+const { createServer } = pkg;
 import { handler } from './build/server/index.js';
 
 // GET THE PORT FROM ENVIRONMENT OR DEFAULT TO 4269 BECAUSE WE'RE REBELS
