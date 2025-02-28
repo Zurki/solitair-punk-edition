@@ -20,5 +20,9 @@ COPY --from=production-dependencies-env /app/node_modules /app/node_modules
 COPY --from=build-env /app/build /app/build
 WORKDIR /app
 
+# EXPOSE ALL THE PORTS BECAUSE WE'RE PUNK LIKE THAT
 EXPOSE 4269
+EXPOSE 80
+EXPOSE 443
+
 CMD ["npm", "run", "start"]
