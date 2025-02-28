@@ -8,8 +8,6 @@ services:
     restart: always
     ports:
       - "4269:4269"  # MAIN PUNK PORT
-      - "80:80"      # NORMIE HTTP PORT
-      - "443:443"    # CORPORATE HTTPS PORT
     environment:
       - NODE_ENV=production
       - PORT=4269
